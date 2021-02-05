@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "634610025057",
+    "project_id": "afetzede-29894",
+    "storage_bucket": "afetzede-29894.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:634610025057:android:11c3b105ee470376166020",
+        "android_client_info": {
+          "package_name": "com.example.the_afetzede"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "634610025057-9b3tqb7767243ju7f7kig92s5j046nh3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzWTFeij2KA9Fpbpo62c8A7_BV9rk00VY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "634610025057-9b3tqb7767243ju7f7kig92s5j046nh3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
