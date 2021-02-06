@@ -16,10 +16,12 @@ class _HomeViewState extends State<HomeView> {
         title: Text('asdasdsad'),
       ),
       body: Container(
-          child: ElevatedButton(
-        child: Text('Kayıt Ol'),
-        onPressed: () => LoginPage,
-      )),
+        child: ElevatedButton(
+          child: Text('Kayıt Ol'),
+          onPressed: () => Navigator.push(
+              context, MaterialPageRoute(builder: (context) => LoginPage())),
+        ),
+      ),
     );
   }
 }

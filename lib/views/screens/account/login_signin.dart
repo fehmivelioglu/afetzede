@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -5,23 +6,35 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  TextEditingController t1 = TextEditingController();
-  TextEditingController t2 = TextEditingController();
+final TextEditingController t1 = TextEditingController();
+final TextEditingController t2 = TextEditingController();
 
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          TextField(
-            controller: t1,
-          ),
-          TextField(
-            controller: t2,
-          ),
-        ],
+    return Scaffold(
+      body: Container(
+        padding: EdgeInsets.all(50),
+        child: Column(
+          children: [
+            TextField(
+              controller: t1,
+            ),
+            TextField(
+              controller: t2,
+            ),
+            ElevatedButton(
+                onPressed: () => kayitOl(t1.text, t2.text),
+                child: Text('Kayıt Ol'))
+          ],
+        ),
       ),
     );
   }
+}
+
+kayitOl(String email, String pass) {
+  print(email);
+  FirebaseAuth.instance
+      .createUserWithEmailAndPassword(email: email, password: pass);
 }
