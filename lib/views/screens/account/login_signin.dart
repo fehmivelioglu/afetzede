@@ -29,8 +29,12 @@ class _LoginPageState extends State<LoginPage> {
               child: Text('Kayıt Ol'),
             ),
             ElevatedButton(
-              onPressed: () => googleKayitOl(),
+              onPressed: () => signInWithGoogle(),
               child: Text('Google İle Kayıt Ol'),
+            ),
+            ElevatedButton(
+              onPressed: () => signOut(),
+              child: Text('Çıkış Yap'),
             ),
           ],
         ),
