@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_afetzede/core/services/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -37,10 +38,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-kayitOl(String email, String pass) async {
-  await FirebaseAuth.instance
-      .createUserWithEmailAndPassword(email: email, password: pass);
-}
-
-googleKayitOl() {}
