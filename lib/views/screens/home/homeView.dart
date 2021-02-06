@@ -1,10 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_afetzede/core/models/deprem_model.dart';
 import 'package:the_afetzede/core/services/deprem_service.dart';
 import 'package:the_afetzede/core/services/realtime_db_service.dart';
 import 'package:the_afetzede/core/shared/alert_dialog.dart';
 import 'package:the_afetzede/views/screens/account/login_type.dart';
+import 'package:the_afetzede/views/screens/account/my_account.dart';
+
+import '../account/login_type.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key key}) : super(key: key);
@@ -34,9 +38,22 @@ class _HomeViewState extends State<HomeView> {
           automaticallyImplyLeading: false,
           actions: [
             IconButton(
-                icon: Icon(Icons.person),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginType()))),
+              icon: Icon(Icons.person),
+              onPressed: () {
+                FirebaseAuth.instance.authStateChanges().listen((User user) {
+                  if (user == null) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginType()));
+                  } else {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MyAccountPage()));
+                    ;
+                  }
+                });
+              },
+            ),
           ],
           centerTitle: true,
           title: Text('AFETZEDE'),
