@@ -15,11 +15,11 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['uid'] = this.uid;
-    data['userName'] = this.userName;
-    data['place'] = this.place;
-    data['oncelik'] = this.oncelik;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['uid'] = uid;
+    data['userName'] = userName;
+    data['place'] = place;
+    data['oncelik'] = oncelik;
     return data;
   }
 }
@@ -30,17 +30,13 @@ class UsersList {
   UsersList.fromJsonList(Map value) {
     value.forEach((key, value) {
       var user = UserModel.fromJson(value);
-      // aidat.id=value;
-      // if(aidat.key=="id"){
-      //   aidat.id=value;
-      // }else {
+     
       user.key = key;
-      // }
-
+    
       userArray.add(user);
-      // notifyListeners();
+     
     });
   }
-  // AidatList();
+ 
 
 }
