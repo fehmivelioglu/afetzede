@@ -34,7 +34,6 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 kayitOl(String email, String pass) {
-  print(email);
   FirebaseAuth.instance
       .createUserWithEmailAndPassword(email: email, password: pass);
 }
