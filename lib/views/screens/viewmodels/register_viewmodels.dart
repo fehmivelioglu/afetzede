@@ -75,8 +75,7 @@ dynamic registerComplete(context) {
         );
 
         await RealTimeDBService.getInstance().postUser(model);
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeView()));
+        await Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
       },
       padding: EdgeInsets.all(12),
       color: Colors.lightBlueAccent,
