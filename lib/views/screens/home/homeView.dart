@@ -1,12 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:the_afetzede/core/models/deprem_model.dart';
-import 'package:the_afetzede/core/services/deprem_service.dart';
-import 'package:the_afetzede/core/services/realtime_db_service.dart';
-import 'package:the_afetzede/core/shared/alert_dialog.dart';
 import 'package:the_afetzede/views/screens/account/login_type.dart';
 import 'package:the_afetzede/views/screens/account/my_account.dart';
+import 'package:the_afetzede/views/screens/home/deprem_view.dart';
 
 import '../account/login_type.dart';
 
@@ -17,17 +14,12 @@ class HomeView extends StatefulWidget {
   _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
-  RealTimeDBService _realTimeDBService = RealTimeDBService.getInstance();
-  Future _rtDBFuture;
-  DepremService _depremService = DepremService();
-  Future _depremFuture;
-  List<DepremModel> _listDeprem = [];
+class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin {
+  TabController _tabController ;
   @override
   void initState() {
     super.initState();
-    _depremFuture = _depremService.getDeprems();
-    _rtDBFuture = _realTimeDBService.getUsers();
+    _tabController  = TabController(length:3,vsync:this,initialIndex:0);
   }
 
   @override
@@ -35,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           actions: [
             IconButton(
               icon: Icon(Icons.person),
@@ -59,90 +51,117 @@ class _HomeViewState extends State<HomeView> {
           title: Text('AFETZEDE'),
           backgroundColor: Colors.red,
         ),
-        body: FutureBuilder(
-            future: _depremFuture,
-            builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.done:
-                  if (snapshot.hasData) {
-                    _listDeprem = snapshot.data;
-                  }
-                  return ListView.builder(
-                    //  shrinkWrap: true,
-                    // physics: NeverScrollableScrollPhysics(),
-                    itemCount: _listDeprem.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 7,
-                                  offset: Offset(
-                                      0, 3), // changes position of shadow
-                                ),
-                              ],
-                              color: Colors.grey[200],
-                              // boxShadow: shadowList,
-                              borderRadius: BorderRadius.circular(20)),
-                          margin: EdgeInsets.only(top: 10, bottom: 2),
-                          height: 80,
-                          width: screenWidth,
-                          child: Center(
-                            child: ListTile(
-                              onTap: () {
-                                showAlertDialog(context, _listDeprem[index]);
-                              },
-                              contentPadding: EdgeInsets.all(0),
-                              title: Center(
-                                child: Wrap(
-                                  direction: Axis.horizontal,
-                                  children: [
-                                    AutoSizeText(
-                                      _listDeprem[index].yer +
-                                          _listDeprem[index].sehir,
-                                      maxLines: 1,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              leading: Padding(
-                                  padding: EdgeInsets.only(left: 5, bottom: 5),
-                                  child: Container(
-                                    width: 60,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Colors.red),
-                                    child: Center(
-                                        child:
-                                            Text(_listDeprem[index].buyukluk)),
-                                  )),
-                              trailing: Padding(
-                                padding: EdgeInsets.only(right: 8, top: 3),
-                                child: Wrap(
-                                  direction: Axis.vertical,
-                                  children: [
-                                    Text(
-                                      _listDeprem[index].saat,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(_listDeprem[index].tarih),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ));
-                    },
-                  );
-
-                  break;
-                default:
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-              }
-            }));
+        body:_buildTabBarView(),
+        bottomNavigationBar: _buildTabBar(),
+        drawer: _buildDrawer());
   }
+  BottomAppBar _buildTabBar() {
+    return BottomAppBar(
+      child: Container(
+        height: 60,
+        child: TabBar(
+          controller: _tabController,
+          labelColor: Colors.red,
+          unselectedLabelColor: Colors.black,
+          indicatorWeight: 0.001,
+          indicatorColor: Colors.transparent,
+          tabs: <Widget>[
+            Tab(
+              icon: Icon(Icons.home),
+              child: Text(
+                'Depremler',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Tab(
+              icon: Icon(Icons.beach_access),
+              child: Text(
+                "Harita",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Tab(
+              icon: Icon(Icons.search),
+              child: Text(
+                "Ekler",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  TabBarView _buildTabBarView() {
+    return TabBarView(
+      controller: _tabController,
+      physics: NeverScrollableScrollPhysics(),
+      children: <Widget>[
+        DepremView(),
+        DepremView(),
+        DepremView(),
+      ],
+    );
+  }
+
+  Drawer _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            child: Text(""),
+            decoration: BoxDecoration(
+                color: Colors.black,
+                image: DecorationImage(
+                    image: AssetImage('assets/bg.png'))),
+          ),
+          Container(
+            padding: EdgeInsets.all(5),
+            width: MediaQuery.of(context).size.width / 1.5,
+            child: TextField(
+              maxLines: 1,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.all(0),
+                hintText: "Arama yap",
+                prefixIcon: Icon(Icons.search, color: Colors.grey),
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(15)),
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(15)),
+              ),
+            ),
+          ),
+          Container(
+            height: 1,
+            color: Colors.orange,
+          ),
+          _drawerListTile('Konut'),
+          Container(
+            height: 1,
+            color: Colors.orange,
+          ),
+          _drawerListTile('Gıda'),
+          Container(
+            height: 1,
+            color: Colors.orange,
+          ),
+         _drawerListTile('Giysi'),
+        ],
+      ),
+    );
+  }
+
+  ListTile _drawerListTile(String text) {
+    return ListTile(
+          leading: Icon(Icons.arrow_forward_ios),
+          title: AutoSizeText(text,maxLines:1),
+          subtitle: AutoSizeText("Afetzedelere ${text} Sağlayabilirim",maxLines:1),
+          onTap: null,
+        );
+  }
+  
+
 }
