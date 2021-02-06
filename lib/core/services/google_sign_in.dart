@@ -24,6 +24,7 @@ dynamic signOut() async {
 }
 
 dynamic printUid() {
-  String x = FirebaseAuth.instance.currentUser.uid;
+  String x;
+  x = FirebaseAuth.instance.currentUser.uid;
   print(x);
 }
