@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_afetzede/views/screens/account/login_signin.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key key}) : super(key: key);
@@ -14,7 +15,13 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: Text('asdasdsad'),
       ),
-      body: Container(child: Text('adsada')),
+      body: Container(
+        child: ElevatedButton(
+          child: Text('Kayıt Ol'),
+          onPressed: () => Navigator.push(
+              context, MaterialPageRoute(builder: (context) => LoginPage())),
+        ),
+      ),
     );
   }
 }
