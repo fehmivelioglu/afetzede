@@ -24,8 +24,13 @@ class _LoginPageState extends State<LoginPage> {
               controller: t2,
             ),
             ElevatedButton(
-                onPressed: () => kayitOl(t1.text, t2.text),
-                child: Text('Kayıt Ol'))
+              onPressed: () => kayitOl(t1.text, t2.text),
+              child: Text('Kayıt Ol'),
+            ),
+            ElevatedButton(
+              onPressed: () => googleKayitOl(),
+              child: Text('Google İle Kayıt Ol'),
+            ),
           ],
         ),
       ),
@@ -33,7 +38,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-kayitOl(String email, String pass) {
-  FirebaseAuth.instance
+kayitOl(String email, String pass) async {
+  await FirebaseAuth.instance
       .createUserWithEmailAndPassword(email: email, password: pass);
 }
+
+googleKayitOl() {}
