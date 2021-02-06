@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_afetzede/core/services/google_sign_in.dart';
 
@@ -35,6 +34,10 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () => signOut(),
               child: Text('Çıkış Yap'),
+            ),
+            ElevatedButton(
+              onPressed: () => printUid(),
+              child: Text('UID'),
             ),
           ],
         ),
