@@ -29,10 +29,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   pedantic: ^1.9.2
+  http: ^0.12.2
   firebase_core: ^0.7.0
   firebase_auth: ^0.20.0+1
   google_sign_in: ^4.5.9
   firebase_messaging: ^6.0.16
+  
   
 
 dev_dependencies:
