@@ -36,6 +36,7 @@ dependencies:
   firebase_messaging: ^6.0.16
   auto_size_text: ^2.1.0
   font_awesome_flutter: ^8.11.0
+  google_maps_flutter: ^1.2.0
 
 dev_dependencies:
   flutter_test:

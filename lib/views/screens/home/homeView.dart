@@ -6,6 +6,7 @@ import 'package:the_afetzede/views/screens/account/login_type.dart';
 import 'package:the_afetzede/views/screens/account/my_account.dart';
 import 'package:the_afetzede/views/screens/home/bildirim_view.dart';
 import 'package:the_afetzede/views/screens/home/deprem_view.dart';
+import 'package:the_afetzede/views/screens/home/harita_view.dart';
 
 import '../account/login_type.dart';
 
@@ -16,12 +17,13 @@ class HomeView extends StatefulWidget {
   _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin {
-  TabController _tabController ;
+class _HomeViewState extends State<HomeView>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
   @override
   void initState() {
     super.initState();
-    _tabController  = TabController(length:3,vsync:this,initialIndex:0);
+    _tabController = TabController(length: 3, vsync: this, initialIndex: 0);
   }
 
   @override
@@ -53,10 +55,11 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
           title: Text('AFETZEDE'),
           backgroundColor: Colors.red,
         ),
-        body:_buildTabBarView(),
+        body: _buildTabBarView(),
         bottomNavigationBar: _buildTabBar(),
         drawer: _buildDrawer());
   }
+
   BottomAppBar _buildTabBar() {
     return BottomAppBar(
       child: Container(
@@ -94,13 +97,14 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
       ),
     );
   }
+
   TabBarView _buildTabBarView() {
     return TabBarView(
       controller: _tabController,
       physics: NeverScrollableScrollPhysics(),
       children: <Widget>[
         DepremView(),
-        DepremView(),
+        HaritaView(),
         BildirimView(),
       ],
     );
@@ -115,8 +119,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
             child: Text(""),
             decoration: BoxDecoration(
                 color: Colors.black,
-                image: DecorationImage(
-                    image: AssetImage('assets/bg.png'))),
+                image: DecorationImage(image: AssetImage('assets/bg.png'))),
           ),
           Container(
             padding: EdgeInsets.all(5),
@@ -137,7 +140,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
           _container(),
           _drawerListTile('Gıda'),
           _container(),
-         _drawerListTile('Giysi'),
+          _drawerListTile('Giysi'),
         ],
       ),
     );
@@ -145,19 +148,18 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
 
   Container _container() {
     return Container(
-          height: 1,
-          color: Colors.orange,
-        );
+      height: 1,
+      color: Colors.orange,
+    );
   }
 
   ListTile _drawerListTile(String text) {
     return ListTile(
-          leading: Icon(Icons.arrow_forward_ios),
-          title: AutoSizeText(text,maxLines:1),
-          subtitle: AutoSizeText("Afetzedelere ${text} Sağlayabilirim",maxLines:1),
-          onTap: null,
-        );
+      leading: Icon(Icons.arrow_forward_ios),
+      title: AutoSizeText(text, maxLines: 1),
+      subtitle:
+          AutoSizeText("Afetzedelere ${text} Sağlayabilirim", maxLines: 1),
+      onTap: null,
+    );
   }
-  
-
 }
