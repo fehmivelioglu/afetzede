@@ -90,7 +90,7 @@ class _DepremViewState extends State<DepremView> {
                                           color: Colors.red),
                                       child: Center(
                                           child:
-                                              Text(_listDeprem[index].buyukluk)),
+                                              Text(_listDeprem[index].buyukluk,style: TextStyle(fontWeight: FontWeight.bold),)),
                                     )),
                                 trailing: Padding(
                                   padding: EdgeInsets.only(right: 8, top: 3),
