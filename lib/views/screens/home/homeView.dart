@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_afetzede/core/shared/constants.dart';
 import 'package:the_afetzede/views/screens/account/login_type.dart';
 import 'package:the_afetzede/views/screens/account/my_account.dart';
 import 'package:the_afetzede/views/screens/home/bildirim_view.dart';
@@ -126,33 +127,27 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                 contentPadding: EdgeInsets.all(0),
                 hintText: "Arama yap",
                 prefixIcon: Icon(Icons.search, color: Colors.grey),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(15)),
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(15)),
+                focusedBorder: outlineInputBorder,
+                border: outlineInputBorder,
               ),
             ),
           ),
-          Container(
-            height: 1,
-            color: Colors.orange,
-          ),
+          _container(),
           _drawerListTile('Konut'),
-          Container(
-            height: 1,
-            color: Colors.orange,
-          ),
+          _container(),
           _drawerListTile('Gıda'),
-          Container(
-            height: 1,
-            color: Colors.orange,
-          ),
+          _container(),
          _drawerListTile('Giysi'),
         ],
       ),
     );
+  }
+
+  Container _container() {
+    return Container(
+          height: 1,
+          color: Colors.orange,
+        );
   }
 
   ListTile _drawerListTile(String text) {

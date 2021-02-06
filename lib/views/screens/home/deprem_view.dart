@@ -1,14 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_afetzede/core/models/deprem_model.dart';
 import 'package:the_afetzede/core/services/deprem_service.dart';
 import 'package:the_afetzede/core/services/realtime_db_service.dart';
 import 'package:the_afetzede/core/shared/alert_dialog.dart';
-import 'package:the_afetzede/views/screens/account/login_type.dart';
-import 'package:the_afetzede/views/screens/account/my_account.dart';
 
-import '../account/login_type.dart';
+
+
 
 class DepremView extends StatefulWidget {
   @override
@@ -16,9 +14,9 @@ class DepremView extends StatefulWidget {
 }
 
 class _DepremViewState extends State<DepremView> {
-   RealTimeDBService _realTimeDBService = RealTimeDBService.getInstance();
+  final RealTimeDBService _realTimeDBService = RealTimeDBService.getInstance();
   Future _rtDBFuture;
-  DepremService _depremService = DepremService();
+ final DepremService _depremService = DepremService();
   Future _depremFuture;
   List<DepremModel> _listDeprem = [];
   @override
