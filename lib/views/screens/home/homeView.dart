@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:the_afetzede/core/models/deprem_model.dart';
 import 'package:the_afetzede/core/services/deprem_service.dart';
 import 'package:the_afetzede/core/services/realtime_db_service.dart';
+import 'package:the_afetzede/core/shared/alert_dialog.dart';
 import 'package:the_afetzede/views/screens/account/login_signin.dart';
 import 'package:the_afetzede/views/screens/account/login_type.dart';
 
@@ -73,6 +74,9 @@ class _HomeViewState extends State<HomeView> {
                           width: screenWidth,
                           child: Center(
                             child: ListTile(
+                              onTap: () {
+                                showAlertDialog(context, _listDeprem[index]);
+                              },
                               contentPadding: EdgeInsets.all(0),
                               title: Center(
                                 child: Wrap(

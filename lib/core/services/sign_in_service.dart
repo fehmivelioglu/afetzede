@@ -6,9 +6,16 @@ dynamic kayitOl(String email, String pass) async {
       .createUserWithEmailAndPassword(email: email, password: pass);
 }
 
+dynamic girisYap(String email, String pass) async {
+  await FirebaseAuth.instance
+      .signInWithEmailAndPassword(email: email, password: pass);
+}
+
 Future<UserCredential> signInWithGoogle() async {
+  // ignore: omit_local_variable_types
   final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
 
+  // ignore: omit_local_variable_types
   final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
 
   final GoogleAuthCredential credential = GoogleAuthProvider.credential(
