@@ -38,4 +38,22 @@ class RealTimeDBService {
     }
     return Future.error(jsonResponse);
   }
+
+  Future postUser(UserModel userModel) async{
+    final jsonBody = json.encode(userModel.toJson());
+    final response = await http.post(_firebaseURL + 'users.json',body: jsonBody);
+
+    final jsonResponse = json.decode(response.body);
+    switch (response.statusCode) {
+      case HttpStatus.ok:
+        return Future.value(true);
+
+        break;
+      case HttpStatus.unauthorized:
+        break;
+      default:
+    }
+    return Future.error(jsonResponse);
+
+  }
 }
