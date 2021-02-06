@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:the_afetzede/core/services/sign_in_service.dart';
 import 'package:the_afetzede/views/screens/account/choose_preferences.dart';
 import 'package:the_afetzede/views/screens/account/login.dart';
-import 'package:the_afetzede/views/screens/account/login_google.dart';
 
 class LoginType extends StatefulWidget {
   @override

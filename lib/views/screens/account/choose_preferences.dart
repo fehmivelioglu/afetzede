@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:the_afetzede/views/screens/viewmodels/register_viewmodels.dart';
 
+import '../viewmodels/register_viewmodels.dart';
+import '../viewmodels/register_viewmodels.dart';
+import '../viewmodels/register_viewmodels.dart';
+
 class ChooseView extends StatefulWidget {
   @override
   _ChooseViewState createState() => _ChooseViewState();
@@ -21,6 +25,7 @@ class _ChooseViewState extends State<ChooseView> {
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
             SizedBox(height: 48.0),
+            userName,
             SizedBox(height: 8.0),
             Row(
               children: [
@@ -37,6 +42,7 @@ class _ChooseViewState extends State<ChooseView> {
                     value: selectedItems,
                     onChanged: (String value) {
                       setState(() {
+                        oncelikDeger = value.toString();
                         selectedItems = value;
                       });
                     }),
@@ -53,6 +59,7 @@ class _ChooseViewState extends State<ChooseView> {
                     value: selectedItemsiki,
                     onChanged: (String value) {
                       setState(() {
+                        lokasyonDeger = value.toString();
                         selectedItemsiki = value;
                       });
                     }),
@@ -60,8 +67,7 @@ class _ChooseViewState extends State<ChooseView> {
             ),
             grupAciklama(context),
             SizedBox(height: 40),
-            registerButton(context),
-            createAcc(context),
+            registerComplete(context),
           ],
         ),
       ),

@@ -1,7 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_afetzede/core/services/sign_in_service.dart';
 import 'package:the_afetzede/views/screens/account/choose_preferences.dart';
 import 'package:the_afetzede/views/screens/account/login.dart';
+
+import '../../../core/models/user_model.dart';
+import '../../../core/services/realtime_db_service.dart';
+import '../home/homeView.dart';
 
 TextEditingController t1 = TextEditingController();
 TextEditingController t2 = TextEditingController();
@@ -49,6 +54,34 @@ dynamic registerButton(context) {
       padding: EdgeInsets.all(12),
       color: Colors.lightBlueAccent,
       child: Text('Hesap Oluştur', style: TextStyle(color: Colors.white)),
+    ),
+  );
+}
+
+dynamic registerComplete(context) {
+  return Padding(
+    padding: EdgeInsets.symmetric(vertical: 16.0),
+    // ignore: deprecated_member_use
+    child: RaisedButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
+      ),
+      onPressed: () async {
+        var model = UserModel(
+          uid: FirebaseAuth.instance.currentUser.uid,
+          userName: t3.text,
+          oncelik: oncelikDeger,
+          place: lokasyonDeger,
+        );
+
+        await RealTimeDBService.getInstance().postUser(model);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => HomeView()));
+      },
+      padding: EdgeInsets.all(12),
+      color: Colors.lightBlueAccent,
+      child: Text('Hesap Oluşturmayı Tamamla',
+          style: TextStyle(color: Colors.white)),
     ),
   );
 }

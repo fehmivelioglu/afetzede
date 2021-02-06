@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:the_afetzede/views/screens/viewmodels/login_viewmodels.dart';
 
+import '../viewmodels/login_viewmodels.dart';
+
 class LoginView extends StatefulWidget {
   @override
   _LoginViewState createState() => _LoginViewState();
@@ -21,7 +23,7 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(height: 8.0),
             password,
             SizedBox(height: 24.0),
-            loginButton,
+            girisButton(context),
             createAcc(context),
           ],
         ),

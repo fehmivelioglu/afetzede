@@ -2,7 +2,7 @@ class UserModel {
   String uid;
   String userName;
   String place;
-  int oncelik;
+  String oncelik;
   String key;
 
   UserModel({this.uid, this.userName, this.place, this.oncelik});
@@ -30,13 +30,10 @@ class UsersList {
   UsersList.fromJsonList(Map value) {
     value.forEach((key, value) {
       var user = UserModel.fromJson(value);
-     
+
       user.key = key;
-    
+
       userArray.add(user);
-     
     });
   }
- 
-
 }
