@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:the_afetzede/views/screens/account/login_type.dart';
 import 'package:the_afetzede/views/screens/account/my_account.dart';
+import 'package:the_afetzede/views/screens/home/bildirim_view.dart';
 import 'package:the_afetzede/views/screens/home/deprem_view.dart';
 
 import '../account/login_type.dart';
@@ -99,7 +100,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
       children: <Widget>[
         DepremView(),
         DepremView(),
-        DepremView(),
+        BildirimView(),
       ],
     );
   }
