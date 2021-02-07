@@ -28,6 +28,7 @@ class _HomeViewState extends State<HomeView>
 
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
@@ -81,14 +82,14 @@ class _HomeViewState extends State<HomeView>
             Tab(
               icon: Icon(Icons.beach_access),
               child: Text(
-                "Harita",
+                'Harita',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             Tab(
               icon: Icon(Icons.search),
               child: Text(
-                "Ekler",
+                'Ekler',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
@@ -116,7 +117,7 @@ class _HomeViewState extends State<HomeView>
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            child: Text(""),
+            child: Text(''),
             decoration: BoxDecoration(
                 color: Colors.black,
                 image: DecorationImage(image: AssetImage('assets/bg.png'))),
@@ -128,7 +129,7 @@ class _HomeViewState extends State<HomeView>
               maxLines: 1,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(0),
-                hintText: "Arama yap",
+                hintText: 'Arama yap',
                 prefixIcon: Icon(Icons.search, color: Colors.grey),
                 focusedBorder: outlineInputBorder,
                 border: outlineInputBorder,
@@ -158,7 +159,7 @@ class _HomeViewState extends State<HomeView>
       leading: Icon(Icons.arrow_forward_ios),
       title: AutoSizeText(text, maxLines: 1),
       subtitle:
-          AutoSizeText("Afetzedelere ${text} Sağlayabilirim", maxLines: 1),
+          AutoSizeText('Afetzedelere ${text} Sağlayabilirim', maxLines: 1),
       onTap: null,
     );
   }

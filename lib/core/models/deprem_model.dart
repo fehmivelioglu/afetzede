@@ -31,14 +31,14 @@ class DepremModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['tarih'] = this.tarih;
-    data['saat'] = this.saat;
-    data['enlem'] = this.enlem;
-    data['boylam'] = this.boylam;
-    data['derinlik'] = this.derinlik;
-    data['buyukluk'] = this.buyukluk;
-    data['yer'] = this.yer;
-    data['sehir'] = this.sehir;
+    data['tarih'] = tarih;
+    data['saat'] = saat;
+    data['enlem'] = enlem;
+    data['boylam'] = boylam;
+    data['derinlik'] = derinlik;
+    data['buyukluk'] = buyukluk;
+    data['yer'] = yer;
+    data['sehir'] = sehir;
     return data;
   }
 }

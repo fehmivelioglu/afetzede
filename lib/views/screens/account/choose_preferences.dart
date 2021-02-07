@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:the_afetzede/views/screens/viewmodels/register_viewmodels.dart';
 
 import '../viewmodels/register_viewmodels.dart';
-import '../viewmodels/register_viewmodels.dart';
-import '../viewmodels/register_viewmodels.dart';
 
 class ChooseView extends StatefulWidget {
   @override

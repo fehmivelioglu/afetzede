@@ -7,7 +7,8 @@ import 'package:the_afetzede/core/models/user_model.dart';
 class RealTimeDBService {
   String _firebaseURL;
 
-  static RealTimeDBService _instance = RealTimeDBService._privateConstructor();
+  static final RealTimeDBService _instance =
+      RealTimeDBService._privateConstructor();
 
   RealTimeDBService._privateConstructor() {
     _firebaseURL =
@@ -39,9 +40,10 @@ class RealTimeDBService {
     return Future.error(jsonResponse);
   }
 
-  Future postUser(UserModel userModel) async{
+  Future postUser(UserModel userModel) async {
     final jsonBody = json.encode(userModel.toJson());
-    final response = await http.post(_firebaseURL + 'users.json',body: jsonBody);
+    final response =
+        await http.post(_firebaseURL + 'users.json', body: jsonBody);
 
     final jsonResponse = json.decode(response.body);
     switch (response.statusCode) {
@@ -54,6 +56,5 @@ class RealTimeDBService {
       default:
     }
     return Future.error(jsonResponse);
-
   }
 }

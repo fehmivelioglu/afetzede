@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_afetzede/views/screens/viewmodels/my_account_viewmodels.dart';
 
-import '../viewmodels/register_viewmodels.dart';
-
 class MyAccountPage extends StatefulWidget {
   @override
   _MyAccountPageState createState() => _MyAccountPageState();

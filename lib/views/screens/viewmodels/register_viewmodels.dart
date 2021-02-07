@@ -6,7 +6,6 @@ import 'package:the_afetzede/views/screens/account/login.dart';
 
 import '../../../core/models/user_model.dart';
 import '../../../core/services/realtime_db_service.dart';
-import '../home/homeView.dart';
 
 TextEditingController t1 = TextEditingController();
 TextEditingController t2 = TextEditingController();

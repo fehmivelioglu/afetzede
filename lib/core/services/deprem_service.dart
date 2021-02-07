@@ -3,13 +3,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:the_afetzede/core/models/deprem_model.dart';
 
-class DepremService{
-
+class DepremService {
   final _depremUrl = 'https://turkiyedepremapi.herokuapp.com/api';
 
-  
-
-  Future<List<DepremModel>> getDeprems() async{
+  Future<List<DepremModel>> getDeprems() async {
+    // ignore: omit_local_variable_types
     List<DepremModel> _depremList = [];
     final response = await http.get(_depremUrl);
     Iterable jsonResponse = json.decode(response.body);
@@ -18,11 +16,9 @@ class DepremService{
         .toList();
 
     if (response.statusCode == 200) {
-
       return _depremList;
     } else {
       return Future.error(jsonResponse);
     }
-   
   }
 }
