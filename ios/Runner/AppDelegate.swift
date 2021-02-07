@@ -11,6 +11,9 @@ import GoogleMaps
   ) -> Bool {
     FirebaseApp.configure()
     GMSServices.provideAPIKey("AIzaSyBkabfI0BaBEOb-l8z0pN4wJe_80nCVthU")
+    var flutter_native_splash = 1
+    UIApplication.shared.isStatusBarHidden = false
+
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }

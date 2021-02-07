@@ -37,6 +37,26 @@ dependencies:
   auto_size_text: ^2.1.0
   font_awesome_flutter: ^8.11.0
   google_maps_flutter: ^1.2.0
+  fab_circular_menu: ^1.0.1
+  url_launcher: ^5.7.10
+  flutter_native_splash: ^0.2.9
+  flutter_launcher_name: ^0.0.1
+  flutter_launcher_icons: ^0.8.0
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/logo_nobg.png"
+  
+flutter_launcher_name:
+  name: "Afetzede"
+
+
+flutter_native_splash:
+  image: assets/logo_nobg.png
+  color: "ffffff"
+  fill: false
 
 dev_dependencies:
   flutter_test:

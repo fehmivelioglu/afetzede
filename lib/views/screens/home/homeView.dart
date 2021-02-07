@@ -1,12 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fab_circular_menu/fab_circular_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:the_afetzede/core/shared/constants.dart';
 import 'package:the_afetzede/views/screens/account/login_type.dart';
 import 'package:the_afetzede/views/screens/account/my_account.dart';
 import 'package:the_afetzede/views/screens/home/bildirim_view.dart';
 import 'package:the_afetzede/views/screens/home/deprem_view.dart';
 import 'package:the_afetzede/views/screens/home/harita_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../account/login_type.dart';
 
@@ -32,6 +35,7 @@ class _HomeViewState extends State<HomeView>
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
+          flexibleSpace: SafeArea(child: Image(image:AssetImage('assets/appbar_logo.jpg'),fit:BoxFit.cover)),
           automaticallyImplyLeading: true,
           actions: [
             IconButton(
@@ -53,8 +57,48 @@ class _HomeViewState extends State<HomeView>
             ),
           ],
           centerTitle: true,
-          title: Text('AFETZEDE'),
+          // title: Text('AFETZEDE'),
           backgroundColor: Colors.red,
+        ),
+        floatingActionButton: FabCircularMenu(
+          fabCloseColor: Colors.green,
+        // fabOpenColor: Colors.green,
+        fabColor: Colors.red,
+        ringColor: Colors.red,
+          fabOpenIcon: Icon(Icons.phone),
+          children: [
+            FlatButton.icon(
+              icon: FaIcon(FontAwesomeIcons.starAndCrescent,color: Colors.black,),
+              label: Text('KIZILAY 168',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+              onPressed: (){
+                _callUrgent('168');
+              },
+            ),
+            FlatButton.icon(
+              icon: FaIcon(FontAwesomeIcons.ambulance,color: Colors.black,),
+              label: Text('112 ACİL',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+             onPressed: (){
+                _callUrgent('112');
+              },
+            ),
+             FlatButton.icon(
+              icon: FaIcon(FontAwesomeIcons.handsHelping,color:Colors.black),
+              label: Text('AFAD 122 ',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+              onPressed: (){
+                _callUrgent('122');
+              },
+            )
+            ,
+            FlatButton.icon(
+              icon: FaIcon(FontAwesomeIcons.burn,color: Colors.black,),
+              label: Text('110 İTFAİYE',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
+              onPressed: (){
+                _callUrgent('110');
+              },
+            ),
+            
+            
+          ],
         ),
         body: _buildTabBarView(),
         bottomNavigationBar: _buildTabBar(),
@@ -163,4 +207,8 @@ class _HomeViewState extends State<HomeView>
       onTap: null,
     );
   }
+}
+
+_callUrgent(String number){
+launch('tel://${number}');
 }
