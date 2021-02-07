@@ -17,12 +17,15 @@ class _ChooseViewState extends State<ChooseView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          flexibleSpace: SafeArea(child: Image(image:AssetImage('assets/appbar_logo.jpg'),fit:BoxFit.cover)),
-          automaticallyImplyLeading: true,
-          centerTitle: true,
-          // title: Text('AFETZEDE'),
-          backgroundColor: Colors.red,
-        ),
+        flexibleSpace: SafeArea(
+            child: Image(
+                image: AssetImage('assets/appbar_logo.jpg'),
+                fit: BoxFit.cover)),
+        automaticallyImplyLeading: true,
+        centerTitle: true,
+        // title: Text('AFETZEDE'),
+        backgroundColor: Colors.red,
+      ),
       backgroundColor: Colors.white,
       body: Center(
         child: ListView(

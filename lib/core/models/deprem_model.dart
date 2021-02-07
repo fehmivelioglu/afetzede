@@ -30,7 +30,7 @@ class DepremModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     data['tarih'] = tarih;
     data['saat'] = saat;
     data['enlem'] = enlem;

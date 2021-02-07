@@ -29,7 +29,6 @@ showAlertBildirimlerDialog(BuildContext context, String text,
             value: selectedItems,
             onChanged: (String value) {
               Navigator.of(context).pop();
-              // burda post olaylarımız gerçekleşecek
             }),
       ),
     ),

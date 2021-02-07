@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'views/screens/account/login_type.dart';
 import 'views/screens/home/homeView.dart';
 
 void main() async {
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeView(),
+        '/login':(context)=>LoginType()
       },
     );
   }

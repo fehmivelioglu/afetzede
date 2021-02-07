@@ -32,17 +32,10 @@ class _BildirimViewState extends State<BildirimView> {
     FaIcon(FontAwesomeIcons.thumbsUp),
     FaIcon(FontAwesomeIcons.handsHelping),
   ];
-  // final List<Color> colors = [
-  //   Colors.green[200],
-  //   Colors.yellow[200],
-  //   // Colors.red[200],
-  //   Colors.orange[200]
-  // ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.blue,
       body: ListView.builder(
         itemBuilder: (context, index) {
           return Card(
@@ -53,22 +46,11 @@ class _BildirimViewState extends State<BildirimView> {
                 backgroundColor: Colors.red,
                 child: icons[index],
               ),
-              title: Row(
-                children: [
-                  Container(
-                    // width: 10,
-                  ),
-                  AutoSizeText(
-                    islemler[index],
-                    // maxLines: 2,
-                    // style: TextStyle(fontSize: 5),
-                  ),
-                ],
+              title: AutoSizeText(
+                islemler[index],
               ),
-
-              // subtitle: Text("İşlem $index"),
               onTap: () {
-               showAlertBildirimlerDialog(context, islemler[index]);
+                showAlertBildirimlerDialog(context, islemler[index]);
               },
             ),
           );
