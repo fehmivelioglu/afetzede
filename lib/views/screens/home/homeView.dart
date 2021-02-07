@@ -35,7 +35,19 @@ class _HomeViewState extends State<HomeView>
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
-          flexibleSpace: SafeArea(child: Image(image:AssetImage('assets/appbar_logo.jpg'),fit:BoxFit.cover)),
+          title: Row(
+            children: [
+              Container(
+                height: 65,
+                width: 75,
+                child: Image(
+                  image: AssetImage('assets/appbar_logo_copy.jpg'),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Text('AFETZEDE')
+            ],
+          ),
           automaticallyImplyLeading: true,
           actions: [
             IconButton(
@@ -62,42 +74,64 @@ class _HomeViewState extends State<HomeView>
         ),
         floatingActionButton: FabCircularMenu(
           fabCloseColor: Colors.green,
-        // fabOpenColor: Colors.green,
-        fabColor: Colors.red,
-        ringColor: Colors.red,
+          // fabOpenColor: Colors.green,
+          fabColor: Colors.red,
+          ringColor: Colors.red,
           fabOpenIcon: Icon(Icons.phone),
           children: [
             FlatButton.icon(
-              icon: FaIcon(FontAwesomeIcons.starAndCrescent,color: Colors.black,),
-              label: Text('KIZILAY 168',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-              onPressed: (){
+              icon: FaIcon(
+                FontAwesomeIcons.starAndCrescent,
+                color: Colors.black,
+              ),
+              label: Text(
+                'KIZILAY 168',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+              onPressed: () {
                 _callUrgent('168');
               },
             ),
             FlatButton.icon(
-              icon: FaIcon(FontAwesomeIcons.ambulance,color: Colors.black,),
-              label: Text('112 ACİL',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-             onPressed: (){
+              icon: FaIcon(
+                FontAwesomeIcons.ambulance,
+                color: Colors.black,
+              ),
+              label: Text(
+                '112 ACİL',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+              onPressed: () {
                 _callUrgent('112');
               },
             ),
-             FlatButton.icon(
-              icon: FaIcon(FontAwesomeIcons.handsHelping,color:Colors.black),
-              label: Text('AFAD 122 ',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-              onPressed: (){
+            FlatButton.icon(
+              icon: FaIcon(FontAwesomeIcons.handsHelping, color: Colors.black),
+              label: Text(
+                'AFAD 122 ',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+              onPressed: () {
                 _callUrgent('122');
               },
-            )
-            ,
+            ),
             FlatButton.icon(
-              icon: FaIcon(FontAwesomeIcons.burn,color: Colors.black,),
-              label: Text('110 İTFAİYE',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black),),
-              onPressed: (){
+              icon: FaIcon(
+                FontAwesomeIcons.burn,
+                color: Colors.black,
+              ),
+              label: Text(
+                '110 İTFAİYE',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+              onPressed: () {
                 _callUrgent('110');
               },
             ),
-            
-            
           ],
         ),
         body: _buildTabBarView(),
@@ -117,23 +151,23 @@ class _HomeViewState extends State<HomeView>
           indicatorColor: Colors.transparent,
           tabs: <Widget>[
             Tab(
-              icon: Icon(Icons.home),
+              icon: FaIcon(FontAwesomeIcons.houseDamage),
               child: Text(
                 'Depremler',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             Tab(
-              icon: Icon(Icons.beach_access),
+              icon: Icon(Icons.map),
               child: Text(
                 'Harita',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             Tab(
-              icon: Icon(Icons.search),
+              icon: Icon(Icons.bolt),
               child: Text(
-                'Ekler',
+                'İşlemler',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
@@ -209,6 +243,6 @@ class _HomeViewState extends State<HomeView>
   }
 }
 
-_callUrgent(String number){
-launch('tel://${number}');
+_callUrgent(String number) {
+  launch('tel://${number}');
 }
